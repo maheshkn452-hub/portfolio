@@ -157,7 +157,7 @@ export default function PlayIntro({ onClose }: { onClose: () => void }) {
               </div>
               {slide.chips && (
                 <div className="mt-6 flex flex-wrap justify-center gap-2">
-                  {slide.chips.map((c, i) => (
+                  {(slide.chips as string[]).map((c, i) => (
                     <motion.span
                       key={c}
                       className="glass rounded-full px-3 py-1 text-xs font-semibold tracking-wide text-bone"

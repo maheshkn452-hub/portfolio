@@ -74,7 +74,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
               animate={{ letterSpacing: '0.6em', opacity: 1 }}
               transition={{ duration: 1.6, ease: EASE }}
             >
-              {profile.originalLabel}
+              {(profile as any).originalLabel}
             </motion.p>
           </motion.div>
         )}
@@ -93,7 +93,6 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
           sizes="(max-width: 768px) 100vw, 900px"
           alt={profile.portrait.alt}
           className="h-full w-auto max-w-none object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_55%,transparent_98%)]"
-
         />
       </motion.div>
       <div aria-hidden className="absolute inset-0 z-[1] bg-[radial-gradient(70%_60%_at_50%_40%,transparent_30%,rgba(0,0,0,0.85)_100%)]" />
@@ -115,7 +114,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
           animate={beat >= 3 ? { opacity: 1, letterSpacing: '0.7em', y: beat >= 4 ? '-30vh' : 0 } : {}}
           transition={{ duration: 1.1, ease: EASE }}
         >
-          {profile.seriesTag}
+          {(profile as any).seriesTag}
         </motion.p>
       </div>
 
@@ -127,7 +126,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
           animate={beat >= 5 ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          {profile.tagline.join('  •  ')}
+          {Array.isArray((profile as any).tagline) ? (profile as any).tagline.join('  •  ') : (profile as any).tagline}
         </motion.p>
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={beat >= 6 ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.7, ease: EASE }}>
           <Magnetic>
